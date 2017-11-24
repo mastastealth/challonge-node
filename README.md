@@ -1,19 +1,20 @@
 # challonge-node
 
-A node.js library for [Challonge API](http://api.challonge.com/v1)
+A [fork](https://github.com/alanhhwong/challonge-node) of a node.js library for [Challonge API](http://api.challonge.com/v1).
 
 ## Requirements
 Tested with:
-* Node 6.8.1
-* npm 2.15.1
+* Node 8.7.0
+* npm 5.5.1
 
 ### Installation
 ```js
-npm install --save challonge-node
+npm install challonge-node
 ```
 
 ### Usage
 See tests for full usage
+
 #### Setup
 ```js
 var ChallongeAPI = require('challonge-node');

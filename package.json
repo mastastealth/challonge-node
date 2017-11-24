@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alanhhwong/challonge-node.git"
+    "url": "git+https://github.com/mastastealth/challonge-node.git"
   },
-  "author": "Alan Wong",
+  "author": "Brian Franco",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/alanhhwong/challonge-node/issues"
+    "url": "https://github.com/mastastealth/challonge-node/issues"
   },
-  "homepage": "https://github.com/alanhhwong/challonge-node#readme",
+  "homepage": "https://github.com/mastastealth/challonge-node#readme",
   "dependencies": {
     "request-promise-native": "^1.0.2"
   },
