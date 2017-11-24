@@ -77,7 +77,7 @@ export default class Participants {
 	}
 
 	//https://api.challonge.com/v1/documents/participants/check_in
-	checkin(tid, pid, params) {
+	checkin(tid, pid, params = {}) {
 		return new Promise((resolve, reject) => {
 		_api.request('POST', 'tournaments/'+tid+'/participants/'+pid+'/check_in.json', params)
 			.then(function (response) {
@@ -90,7 +90,7 @@ export default class Participants {
 	}
 
 	//https://api.challonge.com/v1/documents/participants/undo_check_in
-	checkout(tid, pid, params) {
+	checkout(tid, pid, params = {}) {
 		return new Promise((resolve, reject) => {
 		_api.request('POST', 'tournaments/'+tid+'/participants/'+pid+'/undo_check_in.json', params)
 			.then(function (response) {

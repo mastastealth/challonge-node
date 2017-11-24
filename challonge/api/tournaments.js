@@ -106,4 +106,30 @@ export default class Tournaments {
 			});
 		});
 	}
+
+	// https://api.challonge.com/v1/documents/tournaments/process_check_ins
+	proc_checkin(tid, params = {}) {
+		return new Promise((resolve, reject) => {
+		_api.request('POST', 'tournaments/'+tid+'/process_check_ins.json', params)
+			.then(function (response) {
+				response.tournament.id === tid ? resolve(response.tournament) : reject('Mistmatch IDs');
+			})
+			.catch(function (err) {
+				reject(err.message);
+			});
+		});
+	}
+
+	// https://api.challonge.com/v1/documents/tournaments/abort_check_ins
+	abort_checkin(tid, params = {}) {
+		return new Promise((resolve, reject) => {
+		_api.request('POST', 'tournaments/'+tid+'/abort_check_ins.json', params)
+			.then(function (response) {
+				response.tournament.id === tid ? resolve(response.tournament) : reject('Mistmatch IDs');
+			})
+			.catch(function (err) {
+				reject(err.message);
+			});
+		});
+	}
 }
