@@ -9,28 +9,29 @@ let _api_key = new WeakMap();
 
 class ChallongeAPI {
 
-  constructor(key) {
-      _api_key = key;
-  }
+	constructor(key) {
+		_api_key = key;
+	}
 
-  request(method, uri, params) {
-    params['api_key'] = _api_key;
-    const options = {
-      uri: CHALLONGE_API_BASE_URI + uri,
-      method: method,
-      qs: method==='GET' || method==='DELETE' || method==='PUT'? params : null,
-      body: method==='POST' ? params: null,
-      json: true,
-    }
+	request(method, uri, params) {
+		params['api_key'] = _api_key;
+		let options = {
+			uri: CHALLONGE_API_BASE_URI + uri,
+			method: method,
+			json: true,
+		}
 
-    return Request(options);
-  }
+		if (method==='GET' || method==='DELETE' || method==='PUT') options.qs = params;
+		if (method==='POST') options.body = params;
+
+		return Request(options);
+	}
 }
 
 exports.withAPIKey = function withAPIKey(key) {
-    let instance = new ChallongeAPI(key);
-    instance.tournaments = new Tournaments(instance);
-    instance.participants = new Participants(instance);
-    instance.matches = new Matches(instance);
-    return instance;
+	let instance = new ChallongeAPI(key);
+	instance.tournaments = new Tournaments(instance);
+	instance.participants = new Participants(instance);
+	instance.matches = new Matches(instance);
+	return instance;
 }
