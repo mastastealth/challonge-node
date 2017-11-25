@@ -17,12 +17,12 @@ See tests for full usage
 
 #### Setup
 ```js
-var ChallongeAPI = require('challonge-node');
+var ChallongeAPI = require('challonge-node-ng');
 var challonge = ChallongeAPI.withAPIKey(<API_KEY>);
 ```
 or
 ```js
-import ChallongeAPI from 'challonge-node';
+import ChallongeAPI from 'challonge-node-ng';
 const challonge = ChallongeAPI.withAPIKey(<API_KEY>);
 ```
 
