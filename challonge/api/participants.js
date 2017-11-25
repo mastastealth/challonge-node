@@ -10,7 +10,7 @@ export default class Participants {
 
 	index(tid, params = {}) {
 		return new Promise((resolve, reject) => {
-		_api.request('GET', 'tournaments/'+tid+'/participants.json', params)
+			_api.request('GET', 'tournaments/'+tid+'/participants.json', params)
 			.then(function (response) {
 				//remove 1st layer "participant"
 				resolve(response.map(function(obj) {
@@ -29,7 +29,7 @@ export default class Participants {
 		}
 
 		return new Promise((resolve, reject) => {
-		_api.request('POST', 'tournaments/'+tid+'/participants.json', params)
+			_api.request('POST', 'tournaments/'+tid+'/participants.json', params)
 			.then(function (response) {
 				resolve(response.participant);
 			})
@@ -41,7 +41,7 @@ export default class Participants {
 
 	show(tid, pid, params = {}) {
 		return new Promise((resolve, reject) => {
-		_api.request('GET', 'tournaments/'+tid+'/participants/'+pid+'.json', params)
+			_api.request('GET', 'tournaments/'+tid+'/participants/'+pid+'.json', params)
 			.then(function (response) {
 				resolve(response.participant);
 			})
@@ -54,7 +54,7 @@ export default class Participants {
 	//http://api.challonge.com/v1/documents/participants/update
 	update(tid, pid, params) {
 		return new Promise((resolve, reject) => {
-		_api.request('PUT', 'tournaments/'+tid+'/participants/'+pid+'.json', params)
+			_api.request('PUT', 'tournaments/'+tid+'/participants/'+pid+'.json', params)
 			.then(function (response) {
 				resolve(response.participant);
 			})
@@ -66,7 +66,7 @@ export default class Participants {
 
 	delete(tid, pid, params = {}) {
 		return new Promise((resolve, reject) => {
-		_api.request('DELETE', 'tournaments/'+tid+'/participants/'+pid+'.json', params)
+			_api.request('DELETE', 'tournaments/'+tid+'/participants/'+pid+'.json', params)
 			.then(function (response) {
 				resolve(response.participant);
 			})
@@ -79,7 +79,7 @@ export default class Participants {
 	//https://api.challonge.com/v1/documents/participants/check_in
 	checkin(tid, pid, params = {}) {
 		return new Promise((resolve, reject) => {
-		_api.request('POST', 'tournaments/'+tid+'/participants/'+pid+'/check_in.json', params)
+			_api.request('POST', 'tournaments/'+tid+'/participants/'+pid+'/check_in.json', params)
 			.then(function (response) {
 				resolve(response.participant);
 			})
@@ -92,7 +92,7 @@ export default class Participants {
 	//https://api.challonge.com/v1/documents/participants/undo_check_in
 	checkout(tid, pid, params = {}) {
 		return new Promise((resolve, reject) => {
-		_api.request('POST', 'tournaments/'+tid+'/participants/'+pid+'/undo_check_in.json', params)
+			_api.request('POST', 'tournaments/'+tid+'/participants/'+pid+'/undo_check_in.json', params)
 			.then(function (response) {
 				resolve(response.participant);
 			})

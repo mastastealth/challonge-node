@@ -1,6 +1,6 @@
 const assert = require('chai').assert;
 const expect = require('chai').expect;
-import ChallongeAPI from '../src/challonge';
+import ChallongeAPI from '../challonge/challonge';
 
 const challonge = ChallongeAPI.withAPIKey('<API_KEY>');
 
@@ -17,9 +17,11 @@ describe('Tournament', function() {
 	});
 
 	describe('#index()', function() {
-		it('should return num tournaments = 1', function() {
+		it('should return tournament list containing latest tournament id', function() {
 			return challonge.tournaments.index().then(function(tournaments) {
-				expect(tournaments.length).to.equal(1);
+				// In case you already have tournaments under the user,
+				// We'll reverse the list so the one we just added (last) is first in array
+				expect( tournaments.reverse()[0].id ).to.eql(tid);
 			});
 		});
 	})
@@ -56,8 +58,12 @@ describe('Tournament', function() {
 	});
 
 	describe('#reset()', function() {
-		it('should resolve', function() {
-			return challonge.tournaments.reset(tid);
+		it('should reject due to finalized/incomplete tournament', function() {
+			return challonge.tournaments.reset(tid).then(function(tournament) {
+				throw new Error('Expected to not reset, must be in progress or complete');
+			}, function rejected(error) {
+				assert(true);
+			});
 		});
 	});
 

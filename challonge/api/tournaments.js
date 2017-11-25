@@ -10,7 +10,7 @@ export default class Tournaments {
 
 	index(params = {}) {
 		return new Promise((resolve, reject) => {
-		_api.request('GET', 'tournaments.json', params)
+			_api.request('GET', 'tournaments.json', params)
 			.then(function (response) {
 				//remove 1st layer "tournament"
 				resolve(response.map(function(obj) {
@@ -33,7 +33,7 @@ export default class Tournaments {
 		};
 
 		return new Promise((resolve, reject) => {
-		_api.request('POST', 'tournaments.json', params)
+			_api.request('POST', 'tournaments.json', params)
 			.then(function (response) {
 				resolve(response.tournament);
 			})
@@ -44,9 +44,9 @@ export default class Tournaments {
 	}
 
 	//https://api.challonge.com/v1/documents/tournaments/show
-	show(tid, params = {}) {
+	show(tid, params={}) {
 		return new Promise((resolve, reject) => {
-		_api.request('GET', 'tournaments/'+tid+'.json', params)
+			_api.request('GET', 'tournaments/'+tid+'.json', params)
 			.then(function (response) {
 				resolve(response.tournament);
 			})
@@ -59,7 +59,7 @@ export default class Tournaments {
 	//http://api.challonge.com/v1/documents/tournaments/update
 	update(tid, params) {
 		return new Promise((resolve, reject) => {
-		_api.request('PUT', 'tournaments/'+tid+'.json', params)
+			_api.request('PUT', 'tournaments/'+tid+'.json', params)
 			.then(function (response) {
 				resolve(response.tournament);
 			})
@@ -73,7 +73,7 @@ export default class Tournaments {
 		let params = {};
 
 		return new Promise((resolve, reject) => {
-		_api.request('DELETE', 'tournaments/'+tid+'.json', params)
+			_api.request('DELETE', 'tournaments/'+tid+'.json', params)
 			.then(function (response) {
 				response.tournament.id === tid ? resolve() : reject('Mismatch IDs');
 			})
@@ -85,7 +85,7 @@ export default class Tournaments {
 
 	start(tid, params = {}) {
 		return new Promise((resolve, reject) => {
-		_api.request('POST', 'tournaments/'+tid+'/start.json', params)
+			_api.request('POST', 'tournaments/'+tid+'/start.json', params)
 			.then(function (response) {
 				response.tournament.id === tid ? resolve(response.tournament) : reject('Mistmatch IDs');
 			})
@@ -97,7 +97,7 @@ export default class Tournaments {
 
 	reset(tid, params = {}) {
 		return new Promise((resolve, reject) => {
-		_api.request('POST', 'tournaments/'+tid+'/reset.json', params)
+			_api.request('POST', 'tournaments/'+tid+'/reset.json', params)
 			.then(function (response) {
 				response.tournament.id === tid ? resolve(response.tournament) : reject('Mistmatch IDs');
 			})
@@ -110,7 +110,7 @@ export default class Tournaments {
 	// https://api.challonge.com/v1/documents/tournaments/process_check_ins
 	proc_checkin(tid, params = {}) {
 		return new Promise((resolve, reject) => {
-		_api.request('POST', 'tournaments/'+tid+'/process_check_ins.json', params)
+			_api.request('POST', 'tournaments/'+tid+'/process_check_ins.json', params)
 			.then(function (response) {
 				response.tournament.id === tid ? resolve(response.tournament) : reject('Mistmatch IDs');
 			})
@@ -123,7 +123,7 @@ export default class Tournaments {
 	// https://api.challonge.com/v1/documents/tournaments/abort_check_ins
 	abort_checkin(tid, params = {}) {
 		return new Promise((resolve, reject) => {
-		_api.request('POST', 'tournaments/'+tid+'/abort_check_ins.json', params)
+			_api.request('POST', 'tournaments/'+tid+'/abort_check_ins.json', params)
 			.then(function (response) {
 				response.tournament.id === tid ? resolve(response.tournament) : reject('Mistmatch IDs');
 			})

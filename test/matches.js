@@ -1,6 +1,6 @@
 const assert = require('chai').assert;
 const expect = require('chai').expect;
-import ChallongeAPI from '../src/challonge';
+import ChallongeAPI from '../challonge/challonge';
 
 const challonge = ChallongeAPI.withAPIKey('<API_KEY>');
 

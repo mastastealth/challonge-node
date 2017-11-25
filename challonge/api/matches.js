@@ -10,7 +10,7 @@ export default class Matches {
 
 	index(tid, params = {}) {
 		return new Promise((resolve, reject) => {
-		_api.request('GET', 'tournaments/'+tid+'/matches.json', params)
+			_api.request('GET', 'tournaments/'+tid+'/matches.json', params)
 			.then(function (response) {
 				//remove 1st layer "matches"
 				resolve(response.map(function(obj) {
@@ -25,7 +25,7 @@ export default class Matches {
 
 	show(tid, mid, params = {}) {
 		return new Promise((resolve, reject) => {
-		_api.request('GET', 'tournaments/'+tid+'/matches/'+mid+'.json', params)
+			_api.request('GET', 'tournaments/'+tid+'/matches/'+mid+'.json', params)
 			.then(function (response) {
 				resolve(response.match);
 			})
@@ -38,7 +38,7 @@ export default class Matches {
 	//http://api.challonge.com/v1/documents/matches/update
 	update(tid, mid, params) {
 		return new Promise((resolve, reject) => {
-		_api.request('PUT', 'tournaments/'+tid+'/matches/'+mid+'.json', params)
+			_api.request('PUT', 'tournaments/'+tid+'/matches/'+mid+'.json', params)
 			.then(function (response) {
 				resolve(response.match);
 			})
