@@ -1,4 +1,4 @@
-# challonge-node
+# challonge-node-ng
 
 A [fork](https://github.com/alanhhwong/challonge-node) of a node.js library for [Challonge API](http://api.challonge.com/v1).
 
@@ -9,7 +9,7 @@ Tested with:
 
 ### Installation
 ```js
-npm install challonge-node
+npm install challonge-node-ng
 ```
 
 ### Usage
