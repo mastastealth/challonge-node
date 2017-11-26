@@ -26,7 +26,7 @@ export default class Tournaments {
 	// https://api.challonge.com/v1/documents/tournaments/create
 	create(nameOrParams, url, tournament_type = 'single elimination') {
 		// Either pass in the name/url and optional tournament type, or pass in the whole param object
-		let params = (typeof nameOrParams === 'object' && nameOrParams.hasOwnProperty('name')) ? nameOrParams : {
+		let params = (nameOrParams.hasOwnProperty('tournament')) ? nameOrParams : {
 			name: nameOrParams,
 			tournament_type: tournament_type,
 			url: url,
