@@ -23,10 +23,10 @@ export default class Participants {
 		});
 	}
 
-	create(tid, name) {
-		let params = {
-			name: name,
-		}
+	create(tid, nameOrParams) {
+		let params = (nameOrParams.hasOwnProperty('participant')) ? nameOrParams : {
+			name: nameOrParams
+		};
 
 		return new Promise((resolve, reject) => {
 			_api.request('POST', 'tournaments/'+tid+'/participants.json', params)
