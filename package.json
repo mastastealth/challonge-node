@@ -1,6 +1,6 @@
 {
   "name": "challonge-node-ng",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A fork of a node.js library for the Challonge API",
   "main": "dist/challonge.js",
   "scripts": {
@@ -11,16 +11,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mastastealth/challonge-node.git"
+    "url": "git+https://github.com/mastastealth/challonge-node-ng.git"
   },
   "author": "Brian Franco",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mastastealth/challonge-node/issues"
+    "url": "https://github.com/mastastealth/challonge-node-ng/issues"
   },
-  "homepage": "https://github.com/mastastealth/challonge-node#readme",
+  "homepage": "https://github.com/mastastealth/challonge-node-ng#readme",
   "dependencies": {
-    "request-promise-native": "^1.0.2"
+    "request-promise-native": "^1.0.5"
   },
   "devDependencies": {
     "babel-plugin-transform-class-properties": "^6.11.5",
