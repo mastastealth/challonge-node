@@ -1,6 +1,6 @@
 {
   "name": "challonge-node-ng",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A fork of a node.js library for the Challonge API",
   "main": "dist/challonge.js",
   "scripts": {
