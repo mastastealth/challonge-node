@@ -48,7 +48,21 @@ export default class Matches {
 		});
 	}
 
-	add_attach(tid, mid, params) {
+	index_attach(tid, mid, params = {}) {
+		return new Promise((resolve, reject) => {
+			_api.request('GET', 'tournaments/'+tid+'/matches/'+mid+'/attachments.json', params)
+			.then(function (response) {
+				resolve(response.map(function(obj) {
+					return obj.match_attachment;
+				}));
+			})
+			.catch(function (err) {
+				reject(err.message);
+			});
+		});
+	}
+
+	add_attach(tid, mid, params = {}) {
 		return new Promise((resolve, reject) => {
 			_api.request('POST', 'tournaments/'+tid+'/matches/'+mid+'/attachments.json', params)
 			.then(function (response) {
@@ -60,7 +74,7 @@ export default class Matches {
 		});
 	}
 
-	remove_attach(tid, mid, aid, params) {
+	remove_attach(tid, mid, aid, params = {}) {
 		return new Promise((resolve, reject) => {
 			_api.request('DELETE', 'tournaments/'+tid+'/matches/'+mid+'/attachments/'+aid+'.json', params)
 			.then(function (response) {

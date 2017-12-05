@@ -101,4 +101,16 @@ export default class Participants {
 			});
 		});
 	}
+
+	randomize(tid, params = {}) {
+		return new Promise((resolve, reject) => {
+			_api.request('POST', 'tournaments/'+tid+'/participants/randomize.json', params)
+			.then(function (response) {
+				resolve(response);
+			})
+			.catch(function (err) {
+				reject(err.message);
+			});
+		});
+	}
 }
