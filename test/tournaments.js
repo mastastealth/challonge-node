@@ -9,7 +9,7 @@ describe('Tournament', function() {
 
 	describe('#create()', function() {
 		it('should return success with tournament id', function() {
-			return challonge.tournaments.create('alantest', 'alantest_url').then(function(tournament) {
+			return challonge.tournaments.create('mastatest', 'mastatest_url').then(function(tournament) {
 				expect(tournament).to.have.property('id');
 				tid = tournament.id;
 			});

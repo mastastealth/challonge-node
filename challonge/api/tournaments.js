@@ -109,7 +109,7 @@ export default class Tournaments {
 
 	finalize(tid, params = {}) {
 		return new Promise((resolve, reject) => {
-			_api.request('POST', 'tournaments/'+tid+'/finalize.json', params)
+			_api.request('POST', 'tournaments/'+tid+'/finalize.json', params, true)
 			.then(function (response) {
 				response.tournament.id === tid ? resolve(response.tournament) : reject('Mistmatch IDs');
 			})

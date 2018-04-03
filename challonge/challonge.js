@@ -13,7 +13,7 @@ class ChallongeAPI {
 		_api_key = key;
 	}
 
-	request(method, uri, params) {
+	request(method, uri, params, forceqs = false) {
 		params['api_key'] = _api_key;
 		let options = {
 			uri: CHALLONGE_API_BASE_URI + uri,
@@ -21,7 +21,7 @@ class ChallongeAPI {
 			json: true,
 		}
 
-		if (method==='GET' || method==='DELETE' || method==='PUT') options.qs = params;
+		if (method==='GET' || method==='DELETE' || method==='PUT' || forceqs) options.qs = params;
 		if (method==='POST') options.body = params;
 
 		return Request(options);

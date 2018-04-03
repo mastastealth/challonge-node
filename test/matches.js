@@ -11,7 +11,7 @@ describe('Matches', function() {
 
 	describe('Tournament#create()', function() {
 		it('should return success with tournament id', function() {
-			return challonge.tournaments.create('alantest', 'alantest_url').then(function(tournament) {
+			return challonge.tournaments.create('mastatest', 'mastatest_url').then(function(tournament) {
 				expect(tournament).to.have.property('id');
 				tid = tournament.id;
 			});
@@ -65,8 +65,28 @@ describe('Matches', function() {
 					winner_id: _matches[0].player1_id
 				}
 			}
+
 			return challonge.matches.update(tid, _matches[0].id, params).then(function(match) {
 				expect(match.id).to.equal(_matches[0].id);
+				params.match.winner_id = _matches[1].player1_id;
+
+				return challonge.matches.update(tid, _matches[1].id, params).then(function(match) {
+					expect(match.id).to.equal(_matches[1].id);
+
+					params.match.winner_id = _matches[0].player1_id;
+
+					return challonge.matches.update(tid, _matches[2].id, params).then(function(match) {
+						expect(match.id).to.equal(_matches[2].id);
+					});
+				});
+			});
+		});
+	});
+
+	describe('Tournament#finalize()', function() {
+		it('should resolve', function() {
+			return challonge.tournaments.finalize(tid, { include_participants: 1}).then(function(tournament) {
+				expect(tournament.participants.length).to.equal(4);
 			});
 		});
 	});
@@ -76,5 +96,4 @@ describe('Matches', function() {
 			return challonge.tournaments.destroy(tid);
 		});
 	});
-
 });
