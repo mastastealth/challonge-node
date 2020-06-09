@@ -108,14 +108,16 @@ export default class Tournaments {
 	}
 
 	finalize(tid, params = {}) {
-		return new Promise((resolve, reject) => {
-			_api.request('POST', 'tournaments/'+tid+'/finalize.json', params, true)
-			.then(function (response) {
-				response.tournament.id === tid ? resolve(response.tournament) : reject('Mistmatch IDs');
-			})
-			.catch(function (err) {
+		return new Promise(async (resolve, reject) => {
+			try {
+				// For some reason this needs to be sent with query strings
+				const req = await _api.request('POST', 'tournaments/'+tid+'/finalize.json', params, true);
+				const json = await req.json();
+
+				json.tournament.id === tid ? resolve(json.tournament) : reject('Mistmatch IDs');
+			} catch(err) {
 				reject(err.message);
-			});
+			}
 		});
 	}
 

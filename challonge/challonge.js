@@ -1,5 +1,7 @@
 'use strict';
-import Request from 'request-promise-native';
+const fetch = require('node-fetch');
+const fetchJson = require('fetch-json');
+
 import Tournaments from './api/tournaments';
 import Participants from './api/participants';
 import Matches from './api/matches';
@@ -15,23 +17,19 @@ class ChallongeAPI {
 
 	request(method, uri, params, forceqs = false) {
 		params['api_key'] = _api_key;
-		let options = {
-			uri: CHALLONGE_API_BASE_URI + uri,
-			method: method,
-			json: true,
-		}
+		const url = CHALLONGE_API_BASE_URI + uri;
 
-		if (method==='GET' || method==='DELETE' || method==='PUT' || forceqs) options.qs = params;
-		if (method==='POST') options.body = params;
-
-		return Request(options);
+		return forceqs
+			? fetch(`${url}?${new URLSearchParams(params)}`, { method })
+			: fetchJson.request(method, url, params);
 	}
 }
 
 exports.withAPIKey = function withAPIKey(key) {
-	let instance = new ChallongeAPI(key);
+	const instance = new ChallongeAPI(key);
 	instance.tournaments = new Tournaments(instance);
 	instance.participants = new Participants(instance);
 	instance.matches = new Matches(instance);
+
 	return instance;
 }
