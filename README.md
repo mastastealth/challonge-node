@@ -40,4 +40,4 @@ npm run test
 
 ## License
 
-challonge-node is available under the MIT license. See the LICENSE file for more info.
+challonge-node-ng is available under the MIT license. See the LICENSE file for more info.
